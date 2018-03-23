@@ -1,0 +1,108 @@
+<html>
+	<head>
+<script src="./script1.js"></script>
+	</head>
+	<h1>
+	Exercice 1
+	</h1>
+	<body>
+		<form method="get" onsubmit="return test(this, event)">
+			<fieldset>
+				<legend>Infos</legend>
+				<label for="username">Nom d'utilisateur: </label><input id="username" name="username" type="text" placeholder="ex: Bob123"/>
+				<label for="pwd">Mot de passe: </label><input id="pwd" name="pwd" type="password" placeholder="aPwD%4"/>
+				<label for="nom">Nom : </label><input id="nom" name="nom" type="text" placeholder="ex: Lachance"/>
+				<label for="prenom">Prénom : </label><input id="prenom" name="prenom" type="text" placeholder="ex: Bob"/>
+				<label for="email">Adresse courriel : </label><input id="email" name="email" type="email" placeholder="ex: abcde123@outlook.com"/>
+				<label for="tel">Téléphone : </label><input id="tel" name="tel" type="tel" placeholder="ex: 418-547-2684"/>
+				<label for="birthday">Date de naissance: </label><input id="birthday" name="birthday" type="date"/>
+			</fieldset>
+			
+			
+			</fieldset>
+			<input id="pageName" name="pageName" type="hidden" value="Formulaire"/>
+			<input id="resetBtn" type="reset" value="Reset"/>			
+			<input id="submitBtn" type="submit"/>
+			
+			
+		</form>
+		<form method="get" onsubmit="return test1(this, event)">
+			<fieldset>
+				<legend>Connexion</legend>
+				<label for="username">Nom d'utilisateur: </label><input id="username1" name="username" type="text" placeholder="ex: Bob123"/>
+				<label for="pwd">Mot de passe: </label><input id="pwd1" name="pwd" type="password" placeholder="aPwD%4"/>
+		
+			</fieldset>
+			
+			
+			</fieldset>
+			
+			<input id="resetBtn" type="reset" value="Reset"/>			
+			<input id="submitBtn" type="submit"/>
+		
+			
+			
+		</form>
+		<h1>
+		Exercice 2
+		</h1>
+		<form method="get" onsubmit="return Exercice2(this, event)">
+				<fieldset>
+				<legend>Achats</legend>
+				<select id="prod"  name="Produits">
+					<option value="SubaruWRX">SubaruWRX</option>
+					<option value="Ordinateur">Ordinateur</option>
+					<option value="Guitar">Guitar</option>
+					<option value="Systèmedeson">systèmedeson</option>
+					<option value="Âme">Âme</option>
+				</select>
+			      <select id="color" name="Produits">
+					
+						<option value="Bleu">Bleu</option>
+						<option value="Blanc">Blanc</option>
+						<option value="Rouge">Rouge</option>
+						<option value="Mauve">Mauve</option>
+					</select>
+					<select id="quant" name="Produits"
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+			</select>
+					
+					<label for="name">Nom complet : </label><input id="name" name="name" type="text" placeholder="ex: Bob Lachance"/>
+					<label for="email">Adresse courriel : </label><input id="email" name="email" type="email" placeholder="ex: abcde123@outlook.com"/>
+					<label for="adresse">Adresse : </label><input id="adresse" name="adresse" type="text" placeholder="ex: 4422 de l'Avenu"/>	
+					
+			</fieldset>
+			<input id="pageName" name="pageName" type="hidden" value="Formulaire"/>
+			<input id="resetBtn" type="reset" value="Reset"/>			
+			<input id="submitBtn" type="submit"/>		
+		</form>
+		
+		<form method="get" onsubmit="return Exercice2suite(this, event)">
+				<fieldset>
+				<legend>Calcul</legend>
+				<select id="prod" name="Produits">
+					<option value="SubaruWRX">SubaruWRX</option>
+					<option value="Ordinateur">Ordinateur</option>
+					<option value="Guitar">Guitar</option>
+					<option value="Systèmedeson">systèmedeson</option>
+					<option value="Âme">Âme</option>
+				</select>
+				<select id="quant" name="Produits"
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<label for="stotal">Sous-total </label><input id="stotal" name="sTotal" type="text" placeholder="ex: 400"/>
+					<label for="taxes">Taxes </label><input id="taxe" name="taxes" type="text" placeholder="ex: 40,50"/>
+					<label for="total">Total </label><input id="total" name="total" type="text" placeholder="ex: 440,50"/>
+								<input id="pageName" name="pageName" type="hidden" value="Formulaire"/>
+			<input id="resetBtn" type="reset" value="Reset"/>			
+			<input id="submitBtn" type="submit"/>
+		</form>
+	</body>
+</html>
