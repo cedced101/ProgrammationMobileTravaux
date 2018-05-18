@@ -40,12 +40,12 @@
 							<!-- Section "Joueur" -->
 								<div class="col-12" style="background-color:green; border-style: solid; border-width: 0.5px;">Section "Joueur"</div>
 								<div class="col-6" style="background-color: grey; border-style: solid; border-width: 0.5px;">Nom du joueur</div>
-								<!--<div class="col-6" style="background-color: grey; border-style: solid; border-width: 0.5px;"><label for="username"></label><input id="nomj" OnBlur ="validationuti()" name="username" type="text" placeholder="ex: Bob123"/></div>
+								<div class="col-6" style="background-color: grey; border-style: solid; border-width: 0.5px;"><label for="nomj"></label><input id="nomj"  name="nomj" OnBlur ="validationnomj()" type="text" placeholder="ex: Bob123"/></div>
 								<div class="col-6" style="background-color: lavender; border-style: solid; border-width: 0.5px;">Mot de passe</div>
-								<div class="col-6" style="background-color: lavender; border-style: solid; border-width: 0.5px;"><label for="pwd"></label><input id="pwdj" name="pwd" OnBlur ="validationpwd()" type="password" placeholder="aPwD%4"/></div>-->
+								<div class="col-6" style="background-color: lavender; border-style: solid; border-width: 0.5px;"><label for="pwdj"></label><input id="pwdj" name="pwd" OnBlur ="validationpwdj()" type="password" placeholder="aPwD%4"/></div>
 								<div class="col-12" style="background-color:green; border-style: solid; border-width: 0.5px;">Section "Personnage"</div>							
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;">Nom du personnage</div>
-								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="name"></label><input id="nomp" name="nomp" OnBlur ="validationnomp()" type="text" placeholder="ex: Bob Lachance"/></div>
+								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="nomp"></label><input id="nomp" name="nomp" OnBlur ="validationnomp()" type="text" placeholder="ex: Bob Lachance"/></div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Divinité</div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><select id="lstDiv" OnChange ="appel()"></select></div>
 								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;">Alignement</div>
@@ -73,19 +73,19 @@
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Couleur des cheveux</div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="colorcheveux"></label><input id="colorcheveux" name="colorcheveux" OnChange = "couleurs()" type="color"/><label for="hexadecimal"></label><input id="hexadecimalcheveux" OnChange ="hexa()" name="hexadecimal" type="text" placeholder="ex: #000000"/></div>
 							<!-- Section "Caractéristiques" -->
-								<div class="col-12" style="background-color:green; border-style: solid; border-width: 0.5px;">Section "Caractéristiques"<button id ="btnrandom" onclick="getRandomInt()">Generateur de stats</button></div>
+								<div class="col-12" style="background-color:green; border-style: solid; border-width: 0.5px;">Section "Caractéristiques"<button id ="genCarac" onclick="genNbreAlea()">Generateur de stats</button></div>
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;">Force</div>
-								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="force"></label><input id="force" name="force" type="number" disabled /></div>
+								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="force"></label><input id="force" name="force" type="text" disabled /></div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Dextérité</div>
-								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="dext"></label><input id="dext" name="dext" type="number" disabled /></div>
+								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="dext"></label><input id="dext" name="dext" type="text" disabled /></div>
 								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;">Constitution</div>
-								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;"><label for="const"></label><input id="const" name="const" type="number" disabled /></div>
+								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;"><label for="const"></label><input id="const" name="const" type="text" disabled /></div>
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;">Intelligence</div>
-								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="intel"></label><input id="intel" name="intel" type="number" disabled /></div>
+								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="intel"></label><input id="intel" name="intel" type="text" disabled /></div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Sagesse</div>
-								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="sag"></label><input id="sag" name="sag" type="number" disabled /></div>
+								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="sag"></label><input id="sag" name="sag" type="text" disabled /></div>
 								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;">Charisme</div>
-								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;"><label for="char"></label><input id="char" name="char" type="number" disabled /></div>
+								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;"><label for="char"></label><input id="char" name="char" type="text" disabled /></div>
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;">Bonus de force</div>
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="bforce"></label><input id="bforce" name="bforce" type="number" disabled /></div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Bonus de dextérité</div>
@@ -129,7 +129,7 @@
 							<!-- Section "Équipement" -->
 								<div class="col-12" style="background-color:green; border-style: solid; border-width: 0.5px;">Section "Équipement"</div>
 								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;">Arme</div>
-								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="ref"><select id="lstarmes"></select></div>
+								<div class="col-6" style="background-color:grey; border-style: solid; border-width: 0.5px;"><label for="ref"><select id="lstarmes" OnBlur="appelarmes()"></select></div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;">Armure</div>
 								<div class="col-6" style="background-color:lavender; border-style: solid; border-width: 0.5px;"><label for="ref"><select id="lstarmures"></select></div>
 								<div class="col-6" style="background-color:white; border-style: solid; border-width: 0.5px;">Classe d'armure</div>

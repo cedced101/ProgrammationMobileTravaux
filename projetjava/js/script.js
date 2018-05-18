@@ -7,6 +7,8 @@ function remplirListeDeroulantes()
 	remplirListe(document.getElementById("lstDiv"), fakeDB.listerDivinites());
 	remplirListe(document.getElementById("lstRace"), fakeDB.listerRaces());
 	remplirListe(document.getElementById("lstClass"), fakeDB.listerClasses());
+	remplirListe(document.getElementById("lstarmes"), fakeDB.listerArmesPourTaille());
+	remplirListe(document.getElementById("lstarmures"), fakeDB.listerArmuresPourTaille());
 }
 // Maximum de 3 check
 function MaxChck() 
@@ -14,12 +16,15 @@ function MaxChck()
 	var a = document.getElementsByName("chk");
 	var newvar = 0;
 	var count;
-	for(count = 0; count<a.length; count++){
-		if(a[count].checked == true){
+	for(count = 0; count<a.length; count++)
+	{
+		if(a[count].checked == true)
+		{
 			newvar = newvar+1;
 		}
 	}
-	if(newvar>=4){
+	if(newvar>=4)
+	{
 		alert("maximum de 3 cases à cocher!");
 		return false;
 	}
@@ -29,10 +34,10 @@ var changertest;
 var hash;
 function creationperso()
 {
-	var nomduj = document.getElementById("nomj").value;
+	var nomj = document.getElementById("nomj").value;
 	var pwdj = document.getElementById("pwdj").value;
 	hash = fakeDB.hash(pwdj);
-	fakeDB.creerJoueur(nomduj, pwdj);
+	fakeDB.creerJoueur(nomj, pwdj);
 	changertest = document.getElementById("submit").onclick = function(){
 					location.href = "Consultation.html";};
 					alert ("valide");	
@@ -61,14 +66,16 @@ var cpta;
 function appelarmes()
 {
 	changarmes =document.getElementById("lstarmes").value;
+	var db =JSON.parse(localStorage.getItem("DB"));
 	for(cpta = 0; cpta<= 34; cpta++)
 	{
-		if(changarmes == db.tblArme()[cpta].Nom)
-		{
-			optarmes= db.tblArme()[cpta].Nom;
-			var db =JSON.parse(localStorage.getItem("DB"));
-			document.getElementById("armes").value = db.tblAlignement[optarmes].Nom;
-		}		
+			if (frm.lstarmes.selectedIndex == true)
+			{
+				var secarmes = document.createElement("section");
+				contenu.appendChild(secarmes);
+				optarmes= db.tblArme()[cpta].Nom;
+				secarmes = db.tblArme[optarmes].Nom;
+			}	
 	}
 }
 //fonction pour taille max et min
@@ -117,7 +124,6 @@ function determinerpoid()
 	{
 		alert("le poids doit etre en accord avec la categorie taille");
 	}
-	
 }
 //select race
 var race;
@@ -140,18 +146,16 @@ function appel2()
 function remplirListe(idSelected, list)
 {
 	idSelected.innerHTML = "";
-	
-
 	for (var j = 0; j < list.length; j++)
     {
-    	  var objetDivinite = list[j];
-    	  var nom = objetDivinite.Nom;
-    	  idSelected.options.length = list.length;
-
-    	  idSelected.options[j].value = nom;
-    	  idSelected.options[j].text = nom;
+    	var objetDivinite = list[j];
+    	var nom = objetDivinite.Nom;
+    	idSelected.options.length = list.length;
+    	idSelected.options[j].value = nom;
+    	idSelected.options[j].text = nom;
     }
 }
+
 //age max et min pour chaque race
 function determinerage()
 {
@@ -168,8 +172,6 @@ function determinerage()
 	{
 		alert("Impossible, âge max pour race depassée");
 	}
-	
-	
 }
 function AjouterInfo()
 {
@@ -178,223 +180,266 @@ function AjouterInfo()
 var divin=
 {
 	nom : '',
-
 };
-//regex pour creation
+//regex
+var regpwdj = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!?@#\$%\^&\*\-])(?=.{8,})/;
+var regnomj = /^([a-zA-Z0-9]{4,})*$/;
+var reguti = /^([a-zA-Z0-9]{4,})*$/;
+var regpwd = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!?@#\$%\^&\*\-])(?=.{8,})/;
+var regnom = /^[a-zA-Z]{4,}$/;
+var regpren = /^[a-zA-Z]{4,}$/;
+var regemail = /(\w+\.+\w|\w)+\@(gmail|hotmail)\.(com|ca)/;
+var regtel = /\(\d{3}\)\d{3}-\d{4}$/;
+var regnais= /\d{4}-\1(0[1-9]|1[0-2])-[0-3]\d/;
+var regnomp = /^[a-zA-Z]{4,}$/;
+var reglang = /^[a-zA-Z]{4,}$/;
+var regniv = /^(([0-1]{1}[0-9]){1}|([2]{1}[0]{1}))$/;
+var regage = /^[0-9]{3}$/;
+var regtaille = /^[0-9]{3}$/;
+//var pour connexion
 var utilisateur;
 var passw;
-            var	mail ;
-			var uti;
-			var reguti = /^([a-zA-Z0-9]{4,})*$/;
-			var regpwd = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!?@#\$%\^&\*\-])(?=.{8,})/;
-			var regnom = /^[A-Z]+(([-][A-Z])?[a-zA-Z]*)*$/;
-			var regpren = /^[A-Z]+(([-][A-Z])?[a-zA-Z]*)*$/;
-			var regemail = /(\w+\.+\w|\w)+\@(gmail|hotmail)\.(com|ca)/;
-			var regtel = /\(\d{3}\)\d{3}-\d{4}$/;
-			var regnais= /\d{4}-\1(0[1-9]|1[0-2])-[0-3]\d/;
-			var regnomp = /^[a-zA-Z]{4,}$/;
-			var reglang = /^[a-zA-Z]{4,}$/;
-			var regniv = /^(([0-1]{1}[0-9]){1}|([2]{1}[0]{1}))$/;
-			var regage = /^[0-9]{3}$/;
-			var regtaille = /^[0-9]{3}$/;
-			
-			function testcreation(form,event)
-			{
-				appel();
-				parseURLParams();
-				creationperso();
-				determinerage();
-				event.preventDefault();
-				return false;
-			}
-			function test1(form,event)
-			{
-			var uti = document.getElementById("username").value;
-			var	pwd = document.getElementById("pwd").value;
-			var nom = document.getElementById("nom").value;
-			var pren = document.getElementById("prenom").value;			
-			var	mail = document.getElementById("email").value;
-			var tel = document.getElementById("tel").value;
-			var nais = document.getElementById("birthday").value;
-			var lang = document.getElementById("langues").value;
-			var niv = document.getElementById("niveau").value;
-			var nomp = document.getElementById("nomp").value;
-			utilisateur = uti;
-			passw = pwd;
-			event.preventDefault();
-			return false;
-			}
-			var couleur;
-			var couleur2;
-			function couleurs()
-			{
-				 couleur = document.getElementById("coloryeux").value;
-				 couleur2 = document.getElementById("colorcheveux").value;
-				document.getElementById("hexadecimalyeux").value = couleur;
-				document.getElementById("hexadecimalcheveux").value = couleur2;
-				
-			}
-			
-			function hexa()
-			{
-				var hexa = document.getElementById("hexadecimalyeux").value;
-				var hexa2 = document.getElementById("hexadecimalcheveux").value;
-				document.getElementById("coloryeux").value= hexa;
-				document.getElementById("colorcheveux").value= hexa2;
-				
-			}
-			var	niv;
-			function validationniv()
-			{
-				niv = document.getElementById("niveau").value;
-				if(regniv.test(niv) == false)
-				{
-					alert("Ca marche pas niv");
-				}
-			}
-			var	nomp;
-			function validationnomp()
-			{
-				nomp = document.getElementById("nomp").value;
-				if(regnomp.test(nomp) == false)
-				{
-					alert("Ca marche pas nomp");
-				}
-			}
-			var	langue;
-			function validationlang()
-			{
-				langue = document.getElementById("langues").value;
-				if(reglang.test(langue) == false)
-				{
-					alert("Ca marche pas langue");
-				}
-			}
-			
-			function validationuti()
-			{
-				uti = document.getElementById("username").value;
-				if (reguti.test(uti)== false)
-				{
-					alert("Ca marche pas uti");
-				}
-			}
-			var pwd;
-			function validationpwd()
-			{
-				pwd = document.getElementById("pwd").value;
-				if (regpwd.test(pwd)== false)
-				{
-					alert("Ca marche pas pwd");
-				}				
-			}
-			var nom;
-			function validationnom()
-			{
-				nom = document.getElementById("nom").value;
-				if (regnom.test(nom)== false)
-				{
-					alert("Ca marche pas nom");
-				}
-			}
-			var pren;
-			function validationpren()
-			{
-				pren = document.getElementById("prenom").value;			
-				if (regpren.test(pren)== false)
-				{
-					alert("Ca marche pas pren");
-				}
-			}
-			
-			function validationmail()
-			{
-				mail = document.getElementById("email").value;
-			if (regemail.test(mail)== false)
-				{
-					alert("Ca marche pas mail");
-				}
-			}
-			var tel;
-			function validationtel()
-			{
-				tel = document.getElementById("tel").value;
-			if (regtel.test(tel)== false)
-				{
-					alert("Ca marche pas tel");
-				}				
-			}
-			var nais;
-			function validationnais()
-			{
-				nais = document.getElementById("birthday").value;
-				if (regnais.test(nais)== false)
-				{
-					alert("Ca marche pas nais");
-				}
-
-			}
+function testcreation(form,event)
+{
+	var lang = document.getElementById("langues").value;
+	var niv = document.getElementById("niveau").value;
+	var nomp = document.getElementById("nomp").value;
+	var nomj = document.getElementById("nomj").value;
+	var pwdj = document.getElementById("pwdj").value;
+	event.preventDefault();
+	return false;
+}
+function test1(form,event)
+{
+	var uti = document.getElementById("username").value;
+	var pwd = document.getElementById("pwd").value;
+	var nom = document.getElementById("nom").value;
+	var pren = document.getElementById("prenom").value;			
+	var mail = document.getElementById("email").value;
+	var tel = document.getElementById("tel").value;
+	var nais = document.getElementById("birthday").value;
+	utilisateur = uti;
+	passw = pwd;
+	event.preventDefault();
+	return false;
+}
+var couleur;
+var couleur2;
+function couleurs()
+{
+	couleur = document.getElementById("coloryeux").value;
+	couleur2 = document.getElementById("colorcheveux").value;
+	document.getElementById("hexadecimalyeux").value = couleur;
+	document.getElementById("hexadecimalcheveux").value = couleur2;		
+}			
+function hexa()
+{
+	var hexa = document.getElementById("hexadecimalyeux").value;
+	var hexa2 = document.getElementById("hexadecimalcheveux").value;
+	document.getElementById("coloryeux").value= hexa;
+	document.getElementById("colorcheveux").value= hexa2;				
+}
+function validationniv()
+{
+	var niv = document.getElementById("niveau").value;
+	if(regniv.test(niv) == false)
+	{
+		alert("Ca marche pas niv");
+	}
+}
+function validationnomp()
+{
+	var nomp = document.getElementById("nomp").value;
+	if(regnomp.test(nomp) == false)
+	{
+		alert("Ca marche pas nomp");
+	}
+}
+function validationlang()
+{
+	var lang = document.getElementById("langues").value;
+	if(reglang.test(lang) == false)
+	{
+		alert("Ca marche pas langue");
+	}
+}
+function validationnomj()
+{
+	var nomj = document.getElementById("nomj").value;
+	if (regnomj.test(nomj)== false)
+	{
+		alert("Ca marche pas nomj");
+	}
+}
+function validationpwdj()
+{
+	var pwdj = document.getElementById("pwdj").value;
+	if (regpwdj.test(pwdj)== false)
+	{
+		alert("Ca marche pas pwdj");
+	}				
+}
+function validationuti()
+{
+	var uti = document.getElementById("username").value;
+	if (reguti.test(uti)== false)
+	{
+	alert("Ca marche pas uti");
+	}
+}
+function validationpwd()
+{
+	var pwd = document.getElementById("pwd").value;
+	if (regpwd.test(pwd)== false)
+	{
+		alert("Ca marche pas pwd");
+	}				
+}
+function validationnom()
+{
+	var nom = document.getElementById("nom").value;
+	if (regnom.test(nom)== false)
+	{
+		alert("Ca marche pas nom");
+	}
+}
+function validationpren()
+{
+	var pren = document.getElementById("prenom").value;			
+	if (regpren.test(pren)== false)
+	{
+		alert("Ca marche pas pren");
+	}
+}	
+function validationmail()
+{
+	var mail = document.getElementById("email").value;
+	if (regemail.test(mail)== false)
+	{
+		alert("Ca marche pas mail");
+	}
+}
+function validationtel()
+{
+	var tel = document.getElementById("tel").value;
+	if (regtel.test(tel)== false)
+	{
+		alert("Ca marche pas tel");
+	}				
+}
+function validationnais()
+{
+	var nais = document.getElementById("birthday").value;
+	if (regnais.test(nais)== false)
+	{
+		alert("Ca marche pas nais");
+	}
+}
 var uti1;
 var pwd1;			
 function test2(form,event)
-			{					
-				uti1 = document.getElementById("username11").value;
-				pwd1 = document.getElementById("pwd11").value;
-				
-				
-				if (utilisateur==uti1 && passw == pwd1)
-				{	
-					var changer = document.getElementById("submit").onclick = function(){
-					location.href = "Creation.html";};
-					alert ("valide");
-					
-				}
-				
-				else 	
-				{			
-					alert ("Rwrooaaaaaaaaaaa!");
-				}					
-			event.preventDefault();
-			return false;				
-			}
+{					
+	uti1 = document.getElementById("username11").value;
+	pwd1 = document.getElementById("pwd11").value;				
+	if (utilisateur==uti1 && passw == pwd1)
+	{	
+		var changer = document.getElementById("submit").onclick = function(){
+											location.href = "Creation.html";};
+		alert ("valide");					
+	}		
+	else 	
+	{			
+		alert ("Rwrooaaaaaaaaaaa!");
+	}					
+event.preventDefault();
+return false;				
+}
+//produit un nombre aléatoire de 1 à 6 pour les caractéristiques
+function genererStats()
+{
+    document.getElementById("force").value = genNbreAlea();
+    document.getElementById("dext").value = genNbreAlea();
+    document.getElementById("const").value = genNbreAlea();
+    document.getElementById("intel").value = genNbreAlea();
+    document.getElementById("sag").value = genNbreAlea();
+    document.getElementById("char").value = genNbreAlea();
+    document.getElementById("genCarac").disabled = "disabled";
+}
 
-			//produit un nombre aléatoire de 1 à 6 pour les caractéristiques
-			function getRandomInt()
-			{
-				var rndforce = document.getElementById("force");
-				var rnddex = document.getElementById("dext");
-				var rndconst = document.getElementById("const");
-				var rndintel = document.getElementById("intel");
-				var rndsag = document.getElementById("sag");
-				var rndchar = document.getElementById("char");
-				var rndSomme = document.getElementById("rndSomme");
-				rndforce.value = (Math.round(Math.random() *5)+1);
-				rnddex.value = (Math.round(Math.random() *5)+1);
-				rndconst.value = (Math.round(Math.random() *5)+1);
-				rndintel.value = (Math.round(Math.random() *5)+1);
-				rndsag.value = (Math.round(Math.random() *5)+1);
-				rndchar.value = (Math.round(Math.random() *5)+1);				
-				document.getElementById("btnrandom").disabled = true;
-				event.preventDefault();
-			return false;
-			}
-function parseURLParams() {
+function genNbreAlea()
+{
+    var random1 = Math.floor(Math.random() * Math.floor(6)+1);
+    var random2 = Math.floor(Math.random() * Math.floor(6)+1);
+    var random3 = Math.floor(Math.random() * Math.floor(6)+1);
+    return random1.toString() + "," + random2.toString() + "," +  random3.toString();
+}
+
+document.getElementById("genCarac").addEventListener("click", function () {
+genererStats();
+});
+function parseURLParams() 
+{
     var url = window.location.href;
     var queryStart = url.indexOf("?") + 1,
-        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
-        query = url.slice(queryStart, queryEnd - 1),
-        pairs = query.replace(/\+/g, " ").split("&"),
-        parms = {}, i, n, v, nv;
+    queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+    query = url.slice(queryStart, queryEnd - 1),
+    pairs = query.replace(/\+/g, " ").split("&"),
+    parms = {}, i, n, v, nv;
 
     if (query === url || query === "") return;
 
-    for (i = 0; i < pairs.length; i++) {
+    for (i = 0; i < pairs.length; i++)
+	{
         nv = pairs[i].split("=", 2);
         n = decodeURIComponent(nv[0]);
         v = decodeURIComponent(nv[1]);
 
-        if (!parms.hasOwnProperty(n)) parms[n] = [];
-        parms[n].push(nv.length === 2 ? v : null);
+        if (!parms.hasOwnProperty(n)) 
+		{	
+			parms[n] = [];
+			parms[n].push(nv.length === 2 ? v : null);
+		}
     }
-    return parms;
+return parms;
+}
+function idPersonnage()
+{
+    var id;
+    var db = JSON.parse(localStorage.getItem("DB"));
+    if(db.tbltblPersonnage == undefined)
+    {
+        id = 0;
+    }
+    else
+    {
+        var tabPersonnages = db.tbltblPersonnage;
+        id = db.tabPersonnage.length;
+    }    
+    return id;
+}
+function verifierCompetances()
+{
+    var competance = document.getElementsByName("compet");
+    var tabCompet = [];
+    var caracCompet = "";
+    for(var item of competance)
+    {
+        if(item.checked == true)
+        {
+            tabCompet.push(item.value);
+        }
+    }
+    if(tabCompet.length > 3 || tabCompet.length == 0)
+    {
+        return false;
+    }
+    else
+    {   
+        caracCompet += tabCompet[0];
+        for(var i = 1; i < tabCompet.length; i++)
+        {
+            caracCompet += "|" + tabCompet[i];
+        }       
+        return caracCompet;  
+    }
 }
